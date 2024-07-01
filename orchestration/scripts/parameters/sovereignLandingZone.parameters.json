@@ -53,7 +53,7 @@
       "type": "string",
       "usedBy": "all, platform, and dashboard",
       "defaultValue": null,
-      "value": "westeurope",
+      "value": "uksouth",
       "allowedValues": [
         "australiacentral",
         "australiacentral2",
@@ -116,7 +116,7 @@
       "type": "array",
       "usedBy": "all and compliance",
       "defaultValue": [],
-      "value": ["westeurope"],
+      "value": ["uksouth"],
       "allowedValues": [
         "australiacentral",
         "australiacentral2",
@@ -179,7 +179,7 @@
       "type": "array",
       "usedBy": "all and compliance",
       "defaultValue": [],
-      "value": ["westeurope"],
+      "value": ["uksouth"],
       "allowedValues": [
         "australiacentral",
         "australiacentral2",
