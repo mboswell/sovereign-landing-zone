@@ -218,6 +218,14 @@ var varCustomPolicyDefinitionsArray = [
     libDefinition: loadJsonContent('lib/policy_definitions/policy_definition_es_Deny-VNet-Peering.json')
   }
   {
+    name: 'DenyAction-ActivityLogs'
+    libDefinition: loadJsonContent('lib/policy_definitions/policy_definition_es_DenyAction-ActivityLogs.json')
+  }
+  {
+    name: 'DenyAction-DiagnosticLogs'
+    libDefinition: loadJsonContent('lib/policy_definitions/policy_definition_es_DenyAction-DiagnosticLogs.json')
+  }
+  {
     name: 'Deploy-ASC-SecurityContacts'
     libDefinition: loadJsonContent('lib/policy_definitions/policy_definition_es_Deploy-ASC-SecurityContacts.json')
   }
@@ -450,6 +458,26 @@ var varCustomPolicyDefinitionsArray = [
     libDefinition: loadJsonContent('lib/policy_definitions/policy_definition_es_Deploy-FirewallPolicy.json')
   }
   {
+    name: 'Deploy-MDFC-Arc-SQL-DCR-Association'
+    libDefinition: loadJsonContent('lib/policy_definitions/policy_definition_es_Deploy-MDFC-Arc-SQL-DCR-Association.json')
+  }
+  {
+    name: 'Deploy-MDFC-Arc-Sql-DefenderSQL-DCR'
+    libDefinition: loadJsonContent('lib/policy_definitions/policy_definition_es_Deploy-MDFC-Arc-Sql-DefenderSQL-DCR.json')
+  }
+  {
+    name: 'Deploy-MDFC-SQL-AMA'
+    libDefinition: loadJsonContent('lib/policy_definitions/policy_definition_es_Deploy-MDFC-SQL-AMA.json')
+  }
+  {
+    name: 'Deploy-MDFC-SQL-DefenderSQL-DCR'
+    libDefinition: loadJsonContent('lib/policy_definitions/policy_definition_es_Deploy-MDFC-SQL-DefenderSQL-DCR.json')
+  }
+  {
+    name: 'Deploy-MDFC-SQL-DefenderSQL'
+    libDefinition: loadJsonContent('lib/policy_definitions/policy_definition_es_Deploy-MDFC-SQL-DefenderSQL.json')
+  }
+  {
     name: 'Deploy-MySQL-sslEnforcement'
     libDefinition: loadJsonContent('lib/policy_definitions/policy_definition_es_Deploy-MySQL-sslEnforcement.json')
   }
@@ -496,6 +524,10 @@ var varCustomPolicyDefinitionsArray = [
   {
     name: 'Deploy-Storage-sslEnforcement'
     libDefinition: loadJsonContent('lib/policy_definitions/policy_definition_es_Deploy-Storage-sslEnforcement.json')
+  }
+  {
+    name: 'Deploy-UserAssignedManagedIdentity-VMInsights'
+    libDefinition: loadJsonContent('lib/policy_definitions/policy_definition_es_Deploy-UserAssignedManagedIdentity-VMInsights.json')
   }
   {
     name: 'Deploy-Vm-autoShutdown'
@@ -608,6 +640,12 @@ var varCustomPolicySetDefinitionsArray = [
         definitionGroups: []
       }
       {
+        definitionReferenceId: 'ContainerAppsEnvironmentDenyPublicIP'
+        definitionId: '/providers/Microsoft.Authorization/policyDefinitions/d074ddf8-01a5-4b5e-a2b8-964aed452c0a'
+        definitionParameters: varPolicySetDefinitionEsDenyPublicPaaSEndpointsParameters.ContainerAppsEnvironmentDenyPublicIP.parameters
+        definitionGroups: []
+      }
+      {
         definitionReferenceId: 'CosmosDenyPaasPublicIP'
         definitionId: '/providers/Microsoft.Authorization/policyDefinitions/797b37f7-06b8-444c-b1ad-fc62867f335a'
         definitionParameters: varPolicySetDefinitionEsDenyPublicPaaSEndpointsParameters.CosmosDenyPaasPublicIP.parameters
@@ -665,6 +703,54 @@ var varCustomPolicySetDefinitionsArray = [
         definitionReferenceId: 'StorageDenyPaasPublicIP'
         definitionId: '/providers/Microsoft.Authorization/policyDefinitions/b2982f36-99f2-4db5-8eff-283140c09693'
         definitionParameters: varPolicySetDefinitionEsDenyPublicPaaSEndpointsParameters.StorageDenyPaasPublicIP.parameters
+        definitionGroups: []
+      }
+    ]
+  }
+  {
+    name: 'DenyAction-DeleteProtection'
+    libSetDefinition: loadJsonContent('lib/policy_set_definitions/policy_set_definition_es_DenyAction-DeleteProtection.json')
+    libSetChildDefinitions: [
+      {
+        definitionReferenceId: 'DenyActionDelete-ActivityLogSettings'
+        definitionId: '${varTargetManagementGroupResourceId}/providers/Microsoft.Authorization/policyDefinitions/DenyAction-ActivityLogs'
+        definitionParameters: varPolicySetDefinitionEsDenyActionDeleteProtectionParameters['DenyActionDelete-ActivityLogSettings'].parameters
+        definitionGroups: []
+      }
+      {
+        definitionReferenceId: 'DenyActionDelete-DiagnosticSettings'
+        definitionId: '${varTargetManagementGroupResourceId}/providers/Microsoft.Authorization/policyDefinitions/DenyAction-DiagnosticLogs'
+        definitionParameters: varPolicySetDefinitionEsDenyActionDeleteProtectionParameters['DenyActionDelete-DiagnosticSettings'].parameters
+        definitionGroups: []
+      }
+    ]
+  }
+  {
+    name: 'Deploy-AUM-CheckUpdates'
+    libSetDefinition: loadJsonContent('lib/policy_set_definitions/policy_set_definition_es_Deploy-AUM-CheckUpdates.json')
+    libSetChildDefinitions: [
+      {
+        definitionReferenceId: 'azureUpdateManagerVmArcCheckUpdateLinux'
+        definitionId: '/providers/Microsoft.Authorization/policyDefinitions/bfea026e-043f-4ff4-9d1b-bf301ca7ff46'
+        definitionParameters: varPolicySetDefinitionEsDeployAUMCheckUpdatesParameters.azureUpdateManagerVmArcCheckUpdateLinux.parameters
+        definitionGroups: []
+      }
+      {
+        definitionReferenceId: 'azureUpdateManagerVmArcCheckUpdateWindows'
+        definitionId: '/providers/Microsoft.Authorization/policyDefinitions/bfea026e-043f-4ff4-9d1b-bf301ca7ff46'
+        definitionParameters: varPolicySetDefinitionEsDeployAUMCheckUpdatesParameters.azureUpdateManagerVmArcCheckUpdateWindows.parameters
+        definitionGroups: []
+      }
+      {
+        definitionReferenceId: 'azureUpdateManagerVmCheckUpdateLinux'
+        definitionId: '/providers/Microsoft.Authorization/policyDefinitions/59efceea-0c96-497e-a4a1-4eb2290dac15'
+        definitionParameters: varPolicySetDefinitionEsDeployAUMCheckUpdatesParameters.azureUpdateManagerVmCheckUpdateLinux.parameters
+        definitionGroups: []
+      }
+      {
+        definitionReferenceId: 'azureUpdateManagerVmCheckUpdateWindows'
+        definitionId: '/providers/Microsoft.Authorization/policyDefinitions/59efceea-0c96-497e-a4a1-4eb2290dac15'
+        definitionParameters: varPolicySetDefinitionEsDeployAUMCheckUpdatesParameters.azureUpdateManagerVmCheckUpdateWindows.parameters
         definitionGroups: []
       }
     ]
@@ -1184,9 +1270,9 @@ var varCustomPolicySetDefinitionsArray = [
         definitionGroups: []
       }
       {
-        definitionReferenceId: 'defenderForStorageAccounts'
-        definitionId: '/providers/Microsoft.Authorization/policyDefinitions/74c30959-af11-47b3-9ed2-a26e03f427a3'
-        definitionParameters: varPolicySetDefinitionEsDeployMDFCConfigParameters.defenderForStorageAccounts.parameters
+        definitionReferenceId: 'defenderForStorageAccountsV2'
+        definitionId: '/providers/Microsoft.Authorization/policyDefinitions/cfdc5972-75b3-4418-8ae1-7f5c36839390'
+        definitionParameters: varPolicySetDefinitionEsDeployMDFCConfigParameters.defenderForStorageAccountsV2.parameters
         definitionGroups: []
       }
       {
@@ -1202,9 +1288,63 @@ var varCustomPolicySetDefinitionsArray = [
         definitionGroups: []
       }
       {
+        definitionReferenceId: 'migrateToMdeTvm'
+        definitionId: '/providers/Microsoft.Authorization/policyDefinitions/766e621d-ba95-4e43-a6f2-e945db3d7888'
+        definitionParameters: varPolicySetDefinitionEsDeployMDFCConfigParameters.migrateToMdeTvm.parameters
+        definitionGroups: []
+      }
+      {
         definitionReferenceId: 'securityEmailContact'
         definitionId: '${varTargetManagementGroupResourceId}/providers/Microsoft.Authorization/policyDefinitions/Deploy-ASC-SecurityContacts'
         definitionParameters: varPolicySetDefinitionEsDeployMDFCConfigParameters.securityEmailContact.parameters
+        definitionGroups: []
+      }
+    ]
+  }
+  {
+    name: 'Deploy-MDFC-DefenderSQL-AMA'
+    libSetDefinition: loadJsonContent('lib/policy_set_definitions/policy_set_definition_es_Deploy-MDFC-DefenderSQL-AMA.json')
+    libSetChildDefinitions: [
+      {
+        definitionReferenceId: 'defenderForSqlAma'
+        definitionId: '${varTargetManagementGroupResourceId}/providers/Microsoft.Authorization/policyDefinitions/Deploy-MDFC-SQL-AMA'
+        definitionParameters: varPolicySetDefinitionEsDeployMDFCDefenderSQLAMAParameters.defenderForSqlAma.parameters
+        definitionGroups: []
+      }
+      {
+        definitionReferenceId: 'defenderForSqlArcAma'
+        definitionId: '/providers/Microsoft.Authorization/policyDefinitions/3592ff98-9787-443a-af59-4505d0fe0786'
+        definitionParameters: varPolicySetDefinitionEsDeployMDFCDefenderSQLAMAParameters.defenderForSqlArcAma.parameters
+        definitionGroups: []
+      }
+      {
+        definitionReferenceId: 'defenderForSqlArcDcrAssociation'
+        definitionId: '${varTargetManagementGroupResourceId}/providers/Microsoft.Authorization/policyDefinitions/Deploy-MDFC-Arc-SQL-DCR-Association'
+        definitionParameters: varPolicySetDefinitionEsDeployMDFCDefenderSQLAMAParameters.defenderForSqlArcDcrAssociation.parameters
+        definitionGroups: []
+      }
+      {
+        definitionReferenceId: 'defenderForSqlArcMdsql'
+        definitionId: '/providers/Microsoft.Authorization/policyDefinitions/65503269-6a54-4553-8a28-0065a8e6d929'
+        definitionParameters: varPolicySetDefinitionEsDeployMDFCDefenderSQLAMAParameters.defenderForSqlArcMdsql.parameters
+        definitionGroups: []
+      }
+      {
+        definitionReferenceId: 'defenderForSqlArcMdsqlDcr'
+        definitionId: '${varTargetManagementGroupResourceId}/providers/Microsoft.Authorization/policyDefinitions/Deploy-MDFC-Arc-Sql-DefenderSQL-DCR'
+        definitionParameters: varPolicySetDefinitionEsDeployMDFCDefenderSQLAMAParameters.defenderForSqlArcMdsqlDcr.parameters
+        definitionGroups: []
+      }
+      {
+        definitionReferenceId: 'defenderForSqlMdsql'
+        definitionId: '${varTargetManagementGroupResourceId}/providers/Microsoft.Authorization/policyDefinitions/Deploy-MDFC-SQL-DefenderSQL'
+        definitionParameters: varPolicySetDefinitionEsDeployMDFCDefenderSQLAMAParameters.defenderForSqlMdsql.parameters
+        definitionGroups: []
+      }
+      {
+        definitionReferenceId: 'defenderForSqlMdsqlDcr'
+        definitionId: '${varTargetManagementGroupResourceId}/providers/Microsoft.Authorization/policyDefinitions/Deploy-MDFC-SQL-DefenderSQL-DCR'
+        definitionParameters: varPolicySetDefinitionEsDeployMDFCDefenderSQLAMAParameters.defenderForSqlMdsqlDcr.parameters
         definitionGroups: []
       }
     ]
@@ -1289,6 +1429,18 @@ var varCustomPolicySetDefinitionsArray = [
         definitionReferenceId: 'DINE-Private-DNS-Azure-Cosmos-Table'
         definitionId: '/providers/Microsoft.Authorization/policyDefinitions/a63cc0bd-cda4-4178-b705-37dc439d3e0f'
         definitionParameters: varPolicySetDefinitionEsDeployPrivateDNSZonesParameters['DINE-Private-DNS-Azure-Cosmos-Table'].parameters
+        definitionGroups: []
+      }
+      {
+        definitionReferenceId: 'DINE-Private-DNS-Azure-Databricks-Browser-AuthN'
+        definitionId: '/providers/Microsoft.Authorization/policyDefinitions/0eddd7f3-3d9b-4927-a07a-806e8ac9486c'
+        definitionParameters: varPolicySetDefinitionEsDeployPrivateDNSZonesParameters['DINE-Private-DNS-Azure-Databricks-Browser-AuthN'].parameters
+        definitionGroups: []
+      }
+      {
+        definitionReferenceId: 'DINE-Private-DNS-Azure-Databricks-UI-Api'
+        definitionId: '/providers/Microsoft.Authorization/policyDefinitions/0eddd7f3-3d9b-4927-a07a-806e8ac9486c'
+        definitionParameters: varPolicySetDefinitionEsDeployPrivateDNSZonesParameters['DINE-Private-DNS-Azure-Databricks-UI-Api'].parameters
         definitionGroups: []
       }
       {
@@ -1724,6 +1876,12 @@ var varCustomPolicySetDefinitionsArray = [
         definitionGroups: []
       }
       {
+        definitionReferenceId: 'ContainerAppsHttpsOnlyEffect'
+        definitionId: '/providers/Microsoft.Authorization/policyDefinitions/0e80e269-43a4-4ae9-b5bc-178126b8a5cb'
+        definitionParameters: varPolicySetDefinitionEsEnforceEncryptTransitParameters.ContainerAppsHttpsOnlyEffect.parameters
+        definitionGroups: []
+      }
+      {
         definitionReferenceId: 'FunctionLatestTlsEffect'
         definitionId: '/providers/Microsoft.Authorization/policyDefinitions/f9d614c5-c173-4d56-95a7-b4437057d193'
         definitionParameters: varPolicySetDefinitionEsEnforceEncryptTransitParameters.FunctionLatestTlsEffect.parameters
@@ -1889,9 +2047,15 @@ var varPolicySetDefinitionEsAuditUnusedResourcesCostOptimizationParameters = loa
 
 var varPolicySetDefinitionEsDenyPublicPaaSEndpointsParameters = loadJsonContent('lib/policy_set_definitions/policy_set_definition_es_Deny-PublicPaaSEndpoints.parameters.json')
 
+var varPolicySetDefinitionEsDenyActionDeleteProtectionParameters = loadJsonContent('lib/policy_set_definitions/policy_set_definition_es_DenyAction-DeleteProtection.parameters.json')
+
+var varPolicySetDefinitionEsDeployAUMCheckUpdatesParameters = loadJsonContent('lib/policy_set_definitions/policy_set_definition_es_Deploy-AUM-CheckUpdates.parameters.json')
+
 var varPolicySetDefinitionEsDeployDiagnosticsLogAnalyticsParameters = loadJsonContent('lib/policy_set_definitions/policy_set_definition_es_Deploy-Diagnostics-LogAnalytics.parameters.json')
 
 var varPolicySetDefinitionEsDeployMDFCConfigParameters = loadJsonContent('lib/policy_set_definitions/policy_set_definition_es_Deploy-MDFC-Config.parameters.json')
+
+var varPolicySetDefinitionEsDeployMDFCDefenderSQLAMAParameters = loadJsonContent('lib/policy_set_definitions/policy_set_definition_es_Deploy-MDFC-DefenderSQL-AMA.parameters.json')
 
 var varPolicySetDefinitionEsDeployPrivateDNSZonesParameters = loadJsonContent('lib/policy_set_definitions/policy_set_definition_es_Deploy-Private-DNS-Zones.parameters.json')
 
@@ -1912,7 +2076,7 @@ var varPolicySetDefinitionEsEnforceGuardrailsKeyVaultParameters = loadJsonConten
 // Customer Usage Attribution Id
 var varCuaid = '2b136786-9881-412e-84ba-f4c2822e1ac9'
 
-resource resPolicyDefinitions 'Microsoft.Authorization/policyDefinitions@2021-06-01' = [for policy in varCustomPolicyDefinitionsArray: {
+resource resPolicyDefinitions 'Microsoft.Authorization/policyDefinitions@2023-04-01' = [for policy in varCustomPolicyDefinitionsArray: {
   name: policy.libDefinition.name
   properties: {
     description: policy.libDefinition.properties.description
@@ -1925,7 +2089,7 @@ resource resPolicyDefinitions 'Microsoft.Authorization/policyDefinitions@2021-06
   }
 }]
 
-resource resPolicySetDefinitions 'Microsoft.Authorization/policySetDefinitions@2021-06-01' = [for policySet in varCustomPolicySetDefinitionsArray: {
+resource resPolicySetDefinitions 'Microsoft.Authorization/policySetDefinitions@2023-04-01' = [for policySet in varCustomPolicySetDefinitionsArray: {
   dependsOn: [
     resPolicyDefinitions // Must wait for policy definitons to be deployed before starting the creation of Policy Set/Initiative Defininitions
   ]

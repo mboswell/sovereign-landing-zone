@@ -9,14 +9,14 @@
       "maxLength": 5,
       "defaultValue": "train",
       "value": null,
-      "description": "Prefix added to all Azure resources created by the SLZ Preview."
+      "description": "Prefix added to all Azure resources created by the SLZ."
     },
     "parTopLevelManagementGroupName": {
       "type": "string",
       "usedBy": "all and bootstrap",
       "defaultValue": "Partner Training",
       "value": null,
-      "description": "The name of the top-level management group for the SLZ Preview."
+      "description": "The name of the top-level management group for the SLZ."
     },
     "parDeploymentSuffix": {
       "type": "string",
@@ -24,7 +24,7 @@
       "maxLength": 5,
       "defaultValue": null,
       "value": null,
-      "description": "Optional suffix that will be added to all Azure resources created by the the SLZ Preview. Use a '-' at the start of the suffix value if a dash is needed."
+      "description": "Optional suffix that will be added to all Azure resources created by the the SLZ. Use a '-' at the start of the suffix value if a dash is needed."
     },
     "parTopLevelManagementGroupParentId": {
       "type": "string",
@@ -46,8 +46,8 @@
       "type": "string",
       "usedBy": "all and dashboard",
       "defaultValue": "Country/Region",
-      "value": "Partner Training",
-      "description": "The name of the organization deploying the SLZ Preview to brand the compliance dashboard appropriately."
+      "value": null,
+      "description": "The name of the organization deploying the SLZ to brand the compliance dashboard appropriately."
     },
     "parDeploymentLocation": {
       "type": "string",
@@ -411,7 +411,8 @@
         "enableDnsForwarding": false,
         "asn": 65515,
         "bgpPeeringAddress": "",
-        "peerWeight": 5
+        "peerWeight": 5,
+        "vpnClientConfiguration": null
       },
       "value": null,
       "description": "Optional configuration options for the VPN Gateway."
@@ -438,7 +439,7 @@
       ],
       "defaultValue": [],
       "value": [],
-      "description": "Optional array of child management groups to deploy under the SLZ Preview Landing Zones management group."
+      "description": "Optional array of child management groups to deploy under the SLZ Landing Zones management group."
     },
     "parDeployAlzDefaultPolicies": {
       "type": "bool",
@@ -494,16 +495,16 @@
       "usedBy": "all and compliance",
       "defaultValue": "Deny",
       "value": null,
-      "allowedValues": [
-        "Audit",
-        "Deny",
-        "Disabled",
-        "DeployIfNotExists",
-        "Modify",
-        "Append",
-        "AuditIfNotExists"
-      ],
-      "description": "The policy effect used in all assignments for the Sovereignty Policy Baseline."
+      "allowedValues": ["Audit", "Deny", "Disabled"],
+      "description": "The policy effect used in all assignments for the Sovereignty Baseline policy initiatives."
+    },
+    "parPolicyAssignmentEnforcementMode": {
+      "type": "string",
+      "usedBy": "all and compliance",
+      "defaultValue": "Default",
+      "value": null,
+      "allowedValues": ["Default", "DoNotEnforce"],
+      "description": "The enforcement mode used in all policy and initiative assignments."
     },
     "parDeployLogAnalyticsWorkspace": {
       "type": "bool",
@@ -521,11 +522,13 @@
           "policySetDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/179d1daa-458f-4e47-8086-2a68d0d6c38f",
           "policySetAssignmentName": "NIST-SP-800-53-Rev.-5",
           "policySetAssignmentDisplayName": "NIST 800-53 Initiative",
-          "policySetAssignmentDescription": "NIST 800-53 Initiative"
+          "policySetAssignmentDescription": "NIST 800-53 Initiative",
+          "policySetManagementGroupAssignmentScope": "/providers/Microsoft.Management/managementGroups/REPLACE_WITH_MANAGEMENT_GROUP_ID",
+          "policyParameterFilePath": "./parameters/policyParameters/nist800Parameter.json"
         }
       ],
       "value": [],
-      "description": "Toggles deployment of Log Analytics Workspace. True to deploy, otherwise false."
+      "description": "Optional array of customer specified policy assignments to the mentioned scope with the optional input parameter file. If scope is empty assigned at root."
     },
     "parTags": {
       "type": "object",

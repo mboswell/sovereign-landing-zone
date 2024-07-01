@@ -919,12 +919,16 @@ resource resDashboard 'Microsoft.Portal/dashboards@2020-09-01-preview' = {
             colSpan: part.position.colSpan
             rowSpan: part.position.rowSpan
           }
-          metadata: {
+          #disable-next-line BCP036 BCP037
+          metadata: contains(part.metadata.type, 'MarkdownPart') ? {
             inputs: part.metadata.inputs
-            #disable-next-line BCP036
             type: part.metadata.type
             settings: part.metadata.settings
-            partHeader: empty(part.metadata.partHeader) ? part.metadata.partHeader : {}
+          } : {
+            inputs: part.metadata.inputs
+            type: part.metadata.type
+            settings: part.metadata.settings
+            partHeader: part.metadata.partHeader
           }
         }]
       }

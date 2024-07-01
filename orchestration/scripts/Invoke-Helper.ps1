@@ -669,13 +669,12 @@ function Show-ManagementGroupInfo {
         return
     }
 
-    $parDeploymentPrefix = $parParameters.parDeploymentPrefix.value
-    $parTopLevelManagementGroupName = $parParameters.parTopLevelManagementGroupName.value
-    $parDeploymentSuffix = $parParameters.parDeploymentSuffix.value
-    $varTenantId = (Get-AzTenant).Id
-    $varMgName = $parTopLevelManagementGroupName -replace ' ', '%20'
+    $parDeploymentPrefix = [System.Uri]::EscapeDataString($parParameters.parDeploymentPrefix.value)
+    $parTopLevelManagementGroupName = [System.Uri]::EscapeDataString($parParameters.parTopLevelManagementGroupName.value)
+    $parDeploymentSuffix = [System.Uri]::EscapeDataString($parParameters.parDeploymentSuffix.value)
+    $varTenantId = (Get-AzContext).Tenant.Id
     $varManagementGroupLink = "$varAzPortalLink/#view/Microsoft_Azure_ManagementGroups/ManagmentGroupDrilldownMenuBlade/~/overview/tenantId/$varTenantId"
-    $varManagementGroupLink = "$varManagementGroupLink/mgId/$parDeploymentPrefix$parDeploymentSuffix/mgDisplayName/$varMgName/mgCanAddOrMoveSubscription~/true/mgParentAccessLevel/Owner/defaultMenuItemId/overview/drillDownMode~/true"
+    $varManagementGroupLink = "$varManagementGroupLink/mgId/$parDeploymentPrefix$parDeploymentSuffix/mgDisplayName/$parTopLevelManagementGroupName/mgCanAddOrMoveSubscription~/true/mgParentAccessLevel/Owner/defaultMenuItemId/overview/drillDownMode~/true"
     $varManagementGroupInfo = "If you want to learn more about your management group, please click following link.`n`n"
     $varManagementGroupInfo = "$varManagementGroupInfo$varManagementGroupLink`n`n"
 
@@ -705,7 +704,7 @@ function Show-DashboardInfo {
     $parDeploymentSuffix = $parParameters.parDeploymentSuffix.value
     $varSignedInUser = Get-SignedInUser
     $varResourceGroupName = "$parDeploymentPrefix-rg-dashboards-$parDeploymentLocation$parDeploymentSuffix"
-    $varDashboardName = "$parDeploymentPrefix-Sovereign-Landing-Zone-Dashboard-Preview-$parDeploymentLocation$parDeploymentSuffix"
+    $varDashboardName = "$parDeploymentPrefix-Sovereign-Landing-Zone-Dashboard-$parDeploymentLocation$parDeploymentSuffix"
     $varUserDomain = $varSignedInUser.Substring($varSignedInUser.IndexOf("@"))
     $varDashboardLink = "$varAzPortalLink/#$varUserDomain/dashboard/arm/subscriptions/$varManagementSubscriptionId"
     $varDashboardLink = "$varDashboardLink/resourceGroups/$varResourceGroupName/providers/Microsoft.Portal/dashboards/$varDashboardName"
@@ -917,4 +916,14 @@ function Out-DeploymentParameters {
 
     # Save the updated data to the CSV file
     $varUpdatedData | Export-Csv -Path $varExistingCsvFilePath -NoTypeInformation
+}
+
+<#
+.Description
+    Checks whether the Az Resources's version is later than or equal version 7.0.0, which contains breaking changes and could break existing SLZ scripts.
+#>
+function Confirm-AzResourceVersion {
+    $varAzResourcesVersion = (Get-InstalledModule -Name Az.Resources).Version.replace("-preview", "")
+    $varVersion = [Version]$varAzResourcesVersion -ge [Version]"7.0.0"
+    return $varVersion
 }

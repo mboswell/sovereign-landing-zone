@@ -106,7 +106,7 @@
       }
     }
   },
-  "defenderForStorageAccounts": {
+  "defenderForStorageAccountsV2": {
     "parameters": {
       "effect": {
         "value": "[[parameters('enableAscForStorage')]"
@@ -129,6 +129,9 @@
         "value": "[[parameters('vulnerabilityAssessmentProvider')]"
       }
     }
+  },
+  "migrateToMdeTvm": {
+    "parameters": {}
   },
   "securityEmailContact": {
     "parameters": {

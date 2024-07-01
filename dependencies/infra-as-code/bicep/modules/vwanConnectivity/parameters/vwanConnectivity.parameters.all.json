@@ -11,11 +11,17 @@
     "parAzFirewallTier": {
       "value": "Standard"
     },
+    "parAzFirewallIntelMode": {
+      "value": "Alert"
+    },
     "parVirtualHubEnabled": {
       "value": true
     },
     "parAzFirewallDnsProxyEnabled": {
       "value": true
+    },
+    "parAzFirewallDnsServers": {
+      "value": []
     },
     "parVirtualWanName": {
       "value": "alz-vwan-eastus"
@@ -84,6 +90,7 @@
         "privatelink.azurecr.io",
         "privatelink.azure-devices.net",
         "privatelink.azure-devices-provisioning.net",
+        "privatelink.azuredatabricks.net",
         "privatelink.azurehdinsight.net",
         "privatelink.azurehealthcareapis.com",
         "privatelink.azurestaticapps.net",
@@ -149,8 +156,59 @@
         "Environment": "Live"
       }
     },
+    "parVirtualNetworkIdToLinkFailover": {
+      "value": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/HUB_Networking_POC/providers/Microsoft.Network/virtualNetworks/alz-hub-eastus-failover"
+    },
     "parTelemetryOptOut": {
       "value": false
+    },
+    "parGlobalResourceLock": {
+      "value": {
+        "kind": "None",
+        "notes": "This lock was created by the ALZ Bicep vWAN Connectivity Module."
+      }
+    },
+    "parVirtualWanLock": {
+      "value": {
+        "kind": "None",
+        "notes": "This lock was created by the ALZ Bicep vWAN Connectivity Module."
+      }
+    },
+    "parVirtualWanHubsLock": {
+      "value": {
+        "kind": "None",
+        "notes": "This lock was created by the ALZ Bicep vWAN Connectivity Module."
+      }
+    },
+    "parDdosLock": {
+      "value": {
+        "kind": "None",
+        "notes": "This lock was created by the ALZ Bicep vWAN Connectivity Module."
+      }
+    },
+    "parAzureFirewallLock": {
+      "value": {
+        "kind": "None",
+        "notes": "This lock was created by the ALZ Bicep vWAN Connectivity Module."
+      }
+    },
+    "parVpnGatewayLock": {
+      "value": {
+        "kind": "None",
+        "notes": "This lock was created by the ALZ Bicep vWAN Connectivity Module."
+      }
+    },
+    "parPrivateDNSZonesLock": {
+      "value": {
+        "kind": "None",
+        "notes": "This lock was created by the ALZ Bicep vWAN Connectivity Module."
+      }
+    },
+    "parExpressRouteGatewayLock": {
+      "value": {
+        "kind": "None",
+        "notes": "This lock was created by the ALZ Bicep vWAN Connectivity Module."
+      }
     }
   }
 }
