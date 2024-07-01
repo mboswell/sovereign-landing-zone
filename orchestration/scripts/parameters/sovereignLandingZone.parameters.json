@@ -7,14 +7,14 @@
       "usedBy": "all, bootstrap, compliance, platform, and dashboard",
       "minLength": 2,
       "maxLength": 5,
-      "defaultValue": "mcfs",
+      "defaultValue": "train",
       "value": null,
       "description": "Prefix added to all Azure resources created by the SLZ Preview."
     },
     "parTopLevelManagementGroupName": {
       "type": "string",
       "usedBy": "all and bootstrap",
-      "defaultValue": "Microsoft Cloud for Sovereignty",
+      "defaultValue": "Partner Training",
       "value": null,
       "description": "The name of the top-level management group for the SLZ Preview."
     },
@@ -39,21 +39,21 @@
       "usedBy": "all and bootstrap",
       "sampleValue": "Format for EA - /providers/Microsoft.Billing/BillingAccounts/{BillingAccountId}/enrollmentAccounts/{EnrollmentAccountId}",
       "defaultValue": null,
-      "value": null,
+      "value":  "/providers/Microsoft.Billing/BillingAccounts/9077875/enrollmentAccounts/337585",
       "description": "The full resource ID of billing scope associated to the EA, MCA or MPA account you wish to create the subscription in."
     },
     "parCustomer": {
       "type": "string",
       "usedBy": "all and dashboard",
       "defaultValue": "Country/Region",
-      "value": null,
+      "value": "Partner Training",
       "description": "The name of the organization deploying the SLZ Preview to brand the compliance dashboard appropriately."
     },
     "parDeploymentLocation": {
       "type": "string",
       "usedBy": "all, platform, and dashboard",
       "defaultValue": null,
-      "value": null,
+      "value": "westeurope",
       "allowedValues": [
         "australiacentral",
         "australiacentral2",
@@ -116,7 +116,7 @@
       "type": "array",
       "usedBy": "all and compliance",
       "defaultValue": [],
-      "value": [],
+      "value": ["westeurope"],
       "allowedValues": [
         "australiacentral",
         "australiacentral2",
@@ -179,7 +179,7 @@
       "type": "array",
       "usedBy": "all and compliance",
       "defaultValue": [],
-      "value": [],
+      "value": ["westeurope"],
       "allowedValues": [
         "australiacentral",
         "australiacentral2",
@@ -269,28 +269,28 @@
     "parHubNetworkAddressPrefix": {
       "type": "string",
       "usedBy": "all and platform",
-      "defaultValue": "10.20.0.0/16",
+      "defaultValue": "10.80.0.0/16",
       "value": null,
       "description": "CIDR range for the hub VNET."
     },
     "parAzureBastionSubnet": {
       "type": "string",
       "usedBy": "all and platform",
-      "defaultValue": "10.20.15.0/24",
+      "defaultValue": "10.80.15.0/24",
       "value": null,
       "description": "CIDR range for the Azure Bastion subnet."
     },
     "parGatewaySubnet": {
       "type": "string",
       "usedBy": "all and platform",
-      "defaultValue": "10.20.252.0/24",
+      "defaultValue": "10.80.252.0/24",
       "value": null,
       "description": "CIDR range for the Gateway subnet."
     },
     "parAzureFirewallSubnet": {
       "type": "string",
       "usedBy": "all and platform",
-      "defaultValue": "10.20.254.0/24",
+      "defaultValue": "10.80.254.0/24",
       "value": null,
       "description": "CIDR range for the Azure Firewall subnet."
     },
