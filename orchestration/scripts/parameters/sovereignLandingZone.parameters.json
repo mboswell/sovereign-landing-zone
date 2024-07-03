@@ -459,7 +459,7 @@
       "type": "string",
       "usedBy": "all and compliance",
       "defaultValue": null,
-      "value": null,
+      "value": "/subscriptions/54b7b2c0-fe6b-42db-be45-a3e54d0df9aa/resourceGroups/pnp-rg-hub-network-northeurope",
       "description": "Optional resource ID of the Azure Resource Group that contains the Private DNS Zones with usage enforced by ALZ policies."
     },
     "parMsDefenderForCloudEmailSecurityContact": {
