@@ -23,7 +23,7 @@
       "usedBy": "all, bootstrap, compliance, platform, dashboard",
       "maxLength": 5,
       "defaultValue": null,
-      "value": null,
+      "value": "-a",
       "description": "Optional suffix that will be added to all Azure resources created by the the SLZ. Use a '-' at the start of the suffix value if a dash is needed."
     },
     "parTopLevelManagementGroupParentId": {
@@ -53,7 +53,7 @@
       "type": "string",
       "usedBy": "all, platform, and dashboard",
       "defaultValue": null,
-      "value": "westeurope",
+      "value": "northeurope",
       "allowedValues": [
         "australiacentral",
         "australiacentral2",
@@ -116,7 +116,7 @@
       "type": "array",
       "usedBy": "all and compliance",
       "defaultValue": [],
-      "value": ["westeurope"],
+      "value": ["northeurope"],
       "allowedValues": [
         "australiacentral",
         "australiacentral2",
@@ -179,7 +179,7 @@
       "type": "array",
       "usedBy": "all and compliance",
       "defaultValue": [],
-      "value": ["westeurope"],
+      "value": ["northeurope"],
       "allowedValues": [
         "australiacentral",
         "australiacentral2",
@@ -324,21 +324,21 @@
       "type": "string",
       "usedBy": "bootstrap, platform and dashboard",
       "defaultValue": null,
-      "value": null,
+      "value": "337c2cde-2df1-410c-b892-241223e308f4",
       "description": "Optional management subscription ID when using an existing subscription."
     },
     "parIdentitySubscriptionId": {
       "type": "string",
       "usedBy": "bootstrap and platform",
       "defaultValue": null,
-      "value": null,
+      "value": "2e3a0742-3b7d-4175-b2f9-9978c856fa5b",
       "description": "Optional identity subscription ID when using an existing subscription."
     },
     "parConnectivitySubscriptionId": {
       "type": "string",
       "usedBy": "bootstrap and platform",
       "defaultValue": null,
-      "value": null,
+      "value": "54b7b2c0-fe6b-42db-be45-a3e54d0df9aa",
       "description": "Optional connectivity subscription ID when using an existing subscription."
     },
     "parDdosProtectionResourceId": {
@@ -452,7 +452,7 @@
       "type": "string",
       "usedBy": "all and compliance",
       "defaultValue": null,
-      "value": null,
+      "value": "pnp-automation-account-northeurope-a",
       "description": "Optional resource name for an existing Azure Automation account with usage enforced by ALZ policies."
     },
     "parPrivateDnsResourceGroupId": {
@@ -510,7 +510,7 @@
       "type": "bool",
       "usedBy": "all, platform",
       "defaultValue": true,
-      "value": null,
+      "value": "/subscriptions/337c2cde-2df1-410c-b892-241223e308f4/resourceGroups/pnp-rg-logging-northeurope-a/providers/pnp-log-analytics-northeurope-a",
       "description": "True to deploy LogAnalyticsWorkspace, otherwise false."
     },
     "parCustomerPolicySets": {
