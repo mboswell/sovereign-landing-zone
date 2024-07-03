@@ -352,7 +352,7 @@
       "type": "string",
       "usedBy": "compliance",
       "defaultValue": null,
-      "value": null,
+      "value": "/subscriptions/337c2cde-2df1-410c-b892-241223e308f4/resourceGroups/pnp-rg-logging-northeurope-a/providers/pnp-log-analytics-northeurope-a",
       "description": "Optional resource ID for an existing Log Analytics Workspace with usage enforced by ALZ policies."
     },
     "parRequireOwnerRolePermission": {
@@ -510,7 +510,7 @@
       "type": "bool",
       "usedBy": "all, platform",
       "defaultValue": true,
-      "value": "/subscriptions/337c2cde-2df1-410c-b892-241223e308f4/resourceGroups/pnp-rg-logging-northeurope-a/providers/pnp-log-analytics-northeurope-a",
+      "value": "true",
       "description": "True to deploy LogAnalyticsWorkspace, otherwise false."
     },
     "parCustomerPolicySets": {
