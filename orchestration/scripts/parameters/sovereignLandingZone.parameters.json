@@ -8,14 +8,14 @@
       "minLength": 2,
       "maxLength": 5,
       "defaultValue": "pnp",
-      "value": null,
+      "value": "pnp",
       "description": "Prefix added to all Azure resources created by the SLZ."
     },
     "parTopLevelManagementGroupName": {
       "type": "string",
       "usedBy": "all and bootstrap",
       "defaultValue": "Patterns and Practices Team SLZ",
-      "value": null,
+      "value": "Patterns and Practices Team SLZ",
       "description": "The name of the top-level management group for the SLZ."
     },
     "parDeploymentSuffix": {
@@ -46,7 +46,7 @@
       "type": "string",
       "usedBy": "all and dashboard",
       "defaultValue": "Country/Region",
-      "value": MCI Regulated Patterns and Practices Team,
+      "value": "MCI Regulated Patterns and Practices Team",
       "description": "The name of the organization deploying the SLZ to brand the compliance dashboard appropriately."
     },
     "parDeploymentLocation": {
