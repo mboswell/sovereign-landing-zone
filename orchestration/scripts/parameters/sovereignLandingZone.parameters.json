@@ -7,14 +7,14 @@
       "usedBy": "all, bootstrap, compliance, platform, and dashboard",
       "minLength": 2,
       "maxLength": 5,
-      "defaultValue": "train",
+      "defaultValue": "pnp",
       "value": null,
       "description": "Prefix added to all Azure resources created by the SLZ."
     },
     "parTopLevelManagementGroupName": {
       "type": "string",
       "usedBy": "all and bootstrap",
-      "defaultValue": "Patterns and Practices",
+      "defaultValue": "Patterns and Practices Team SLZ",
       "value": null,
       "description": "The name of the top-level management group for the SLZ."
     },
