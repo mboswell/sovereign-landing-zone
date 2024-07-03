@@ -14,7 +14,7 @@
     "parTopLevelManagementGroupName": {
       "type": "string",
       "usedBy": "all and bootstrap",
-      "defaultValue": "Partner Training",
+      "defaultValue": "Patterns and Practices",
       "value": null,
       "description": "The name of the top-level management group for the SLZ Preview."
     },

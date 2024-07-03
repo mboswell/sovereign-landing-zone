@@ -14,7 +14,7 @@
     "parTopLevelManagementGroupName": {
       "type": "string",
       "usedBy": "all and bootstrap",
-      "defaultValue": "Partner Training",
+      "defaultValue": "Patterns and Practices",
       "value": null,
       "description": "The name of the top-level management group for the SLZ."
     },
@@ -46,14 +46,14 @@
       "type": "string",
       "usedBy": "all and dashboard",
       "defaultValue": "Country/Region",
-      "value": null,
+      "value": MCI Regulated Patterns and Practices Team,
       "description": "The name of the organization deploying the SLZ to brand the compliance dashboard appropriately."
     },
     "parDeploymentLocation": {
       "type": "string",
       "usedBy": "all, platform, and dashboard",
       "defaultValue": null,
-      "value": "uksouth",
+      "value": "westeurope",
       "allowedValues": [
         "australiacentral",
         "australiacentral2",
@@ -116,7 +116,7 @@
       "type": "array",
       "usedBy": "all and compliance",
       "defaultValue": [],
-      "value": ["uksouth"],
+      "value": ["westeurope"],
       "allowedValues": [
         "australiacentral",
         "australiacentral2",
@@ -179,7 +179,7 @@
       "type": "array",
       "usedBy": "all and compliance",
       "defaultValue": [],
-      "value": ["uksouth"],
+      "value": ["westeurope"],
       "allowedValues": [
         "australiacentral",
         "australiacentral2",
@@ -242,7 +242,7 @@
       "type": "bool",
       "usedBy": "all, platform and compliance",
       "defaultValue": true,
-      "value": null,
+      "value": false,
       "description": "Toggles deployment of Azure DDOS protection. True to deploy, otherwise false."
     },
     "parDeployHubNetwork": {
@@ -263,34 +263,34 @@
       "type": "bool",
       "usedBy": "all and platform",
       "defaultValue": true,
-      "value": null,
+      "value": false,
       "description": "Toggles deployment of the Premium SKU for Azure Firewall and only used if parEnableFirewall is enabled. True to use Premium SKU, otherwise false."
     },
     "parHubNetworkAddressPrefix": {
       "type": "string",
       "usedBy": "all and platform",
-      "defaultValue": "10.80.0.0/16",
+      "defaultValue": "10.20.0.0/16",
       "value": null,
       "description": "CIDR range for the hub VNET."
     },
     "parAzureBastionSubnet": {
       "type": "string",
       "usedBy": "all and platform",
-      "defaultValue": "10.80.15.0/24",
+      "defaultValue": "10.20.15.0/24",
       "value": null,
       "description": "CIDR range for the Azure Bastion subnet."
     },
     "parGatewaySubnet": {
       "type": "string",
       "usedBy": "all and platform",
-      "defaultValue": "10.80.252.0/24",
+      "defaultValue": "10.20.252.0/24",
       "value": null,
       "description": "CIDR range for the Gateway subnet."
     },
     "parAzureFirewallSubnet": {
       "type": "string",
       "usedBy": "all and platform",
-      "defaultValue": "10.80.254.0/24",
+      "defaultValue": "10.20.254.0/24",
       "value": null,
       "description": "CIDR range for the Azure Firewall subnet."
     },
@@ -317,7 +317,7 @@
       "minValue": 30,
       "maxValue": 730,
       "defaultValue": 365,
-      "value": null,
+      "value": 30,
       "description": "Length of time, in days, to retain log files with usage enforced by ALZ policies."
     },
     "parManagementSubscriptionId": {
